@@ -1,6 +1,6 @@
 window.onload = () => {}
-var Name = prompt("Enter Your name")
-document.getElementById("name").innerHTML = Name
+// var Name = prompt("Enter Your name")
+// document.getElementById("name").innerHTML = Name
 setInterval(
     () => {
         document.getElementById("time").innerText = dayjs().format('dddd, MMM DD YYYY,hh:mm:ss A')
@@ -86,7 +86,7 @@ const handlesubmit = () => {
     let title = getInputFeildvalue("title"),
         location = getInputFeildvalue("location"),
         description = getInputFeildvalue("description");
-
+      
     title = title.trim();
     location = location.trim();
     description = description.trim();
@@ -109,6 +109,7 @@ const handlesubmit = () => {
             location,
             description,
         }
+        document.getElementById("name").innerHTML = user.title;
         user.status = "active";
         user.id = getRandomnumber(),
             user.dateCreated = new Date().getTime();

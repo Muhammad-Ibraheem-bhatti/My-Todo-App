@@ -1,0 +1,12 @@
+@media(max-width:354px){
+    
+    #cardBodys inpt {
+        max-width: 100%;
+    }
+    button{
+        max-width: 100%;
+    }
+}
+body{
+    background-color: yellow;
+}

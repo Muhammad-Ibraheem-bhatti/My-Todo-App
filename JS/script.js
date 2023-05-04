@@ -16,12 +16,12 @@ const showUserINTable = () => {
             return;
         }
         for (let i = 0; i < users.length; i++) {
-            let tableStart = '<div class="table-responsive"><table class="table">';
+            let tableStart = '<div class="table-responsive "><table class="table table-striped table-hover text-center table-bordered">';
             let tableHead = '<thead><tr><th>#</th><th scope = "row">Title</th><th scope = "row">location</th><th scope = "row">Description</th><th scope = "row">Action</th></thead>';
             let tableEnd = '</table></div>';
             let tableBody = '';
             for (let i = 0; i < users.length; i++) {
-                tableBody += '<tr><td>' + (i + 1) + '</td><td>' + users[i].title + '</td><td>' + users[i].location + '</td><td>' + users[i].description + '</td><td><button class="btn btn-sm btn-info m-2" data-value="' + users[i].id + '" onclick="editUser(event)">Edit</button><button class="btn btn-sm btn-danger m-2" data-value="' + users[i].id + '" onclick="deleteUser(event)">Delete</button>';
+                tableBody += '<tr><td class = "py-4">' + (i + 1) + '</td><td class = "py-4">' + users[i].title + '</td><td class = "py-4">' + users[i].location + '</td><td class = "py-4">' + users[i].description + '</td><td><button class="btn btn-sm btn-info mt-1 w-100" data-value="' + users[i].id + '" onclick="editUser(event)">Edit</button><button class="btn btn-sm btn-danger mt-1 w-100" data-value="' + users[i].id + '" onclick="deleteUser(event)">Delete</button>';
             }
             let table = tableStart + tableHead + '<tbody>' + tableBody + '</tbody>' + tableEnd;
             // let tableOut = document.getElementById("table").innerHTML = table
@@ -114,7 +114,7 @@ const handlesubmit = () => {
         user.id = getRandomnumber(),
             user.dateCreated = new Date().getTime();
         const users = JSON.parse(localStorage.getItem("users")) || []
-        users.push(user);
+        users.push(user);   
         localStorage.setItem("users", JSON.stringify(users))
         toastify("A new User Or todo is sucessfully Added", "success");
         showUserINTable();
@@ -145,15 +145,9 @@ const editUser = (event) => {
     let user = users.find((user) => {
         return user.id === userId
     })
+    // Object
     const { title, location, description } = user
-    /*similar code
-     *const title=user.title
-     *const description=user.description
-     */
-    // set value of inputfields
-    // document.getElementById("title").value = title
-    // document.getElementById("location").value = location
-    // document.getElementById("description").value = description
+    
     setFieldValue("title", title)
     setFieldValue("location", location)
     setFieldValue("description", description)
@@ -187,25 +181,5 @@ const handleEdit = () => {
     emptyField();
     showUserINTable();
     console.log(updateduser)
-        // const todoForEdit = JSON.parse(localStorage.getItem("todoForEdit"))
-
-    // let updatedTitle = getInputValue("title")
-    // let updatedLocation = getInputValue("location")
-    // let updatedDescription = getInputValue("description")
-
-    // const updatedTodo = {...todoForEdit, title: updatedTitle, location: updatedLocation, description: updatedDescription }
-    // updatedTodo.dateModified = new Date().getTime()
-
-    // const todos = JSON.parse(localStorage.getItem("todos"))
-    // const updatedTodos = todos.map(todo => {
-    //     if (todo.id === updatedTodo.id) {
-    //         return updatedTodo
-    //     }
-    //     return todo
-    // })
-
-    // localStorage.setItem("todos", JSON.stringify(updatedTodos))
-    // notice("A todo has been updated", "success");
-    // document.getElementById("addTask").style.display = "inline-block"
-    // document.getElementById("updateTask").style.display = "none"
+        
 }

@@ -1,5 +1,5 @@
 @media(max-width:354px){
-    
+
     #cardBodys inpt {
         max-width: 100%;
     }
@@ -8,5 +8,5 @@
     }
 }
 body{
-    background-color: yellow;
+    background-color: #394867;
 }
